@@ -1,0 +1,298 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ヨーク研修のしおり</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one narrow column like a folded rail timetable — route strip, then dated "departure board" rows, then lists */
+:root{
+  --bg:#eceeeb; --paper:#f8f9f7; --ink:#1d2629; --muted:#5d6a6c; --line:#cfd5d2;
+  --accent:#1d5c63; --accent-soft:#d6e6e6; --warn:#a4620c; --warn-soft:#f5e7d0;
+  --display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12191b; --paper:#1a2326; --ink:#e4ebea; --muted:#9aa8a8; --line:#2e3b3e;
+  --accent:#6fb8bf; --accent-soft:#1f3a3d; --warn:#e3a650; --warn-soft:#3a2c17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12191b; --paper:#1a2326; --ink:#e4ebea; --muted:#9aa8a8; --line:#2e3b3e;
+  --accent:#6fb8bf; --accent-soft:#1f3a3d; --warn:#e3a650; --warn-soft:#3a2c17; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:clamp(28px,6vw,38px);font-weight:800}
+h2{font-size:21px;font-weight:600;display:flex;align-items:baseline;gap:10px}
+h2 small{font-family:var(--body);font-size:12px;color:var(--muted);letter-spacing:.08em;font-weight:500}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.lead{color:var(--muted);margin:6px 0 0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:14px}
+
+/* route strip */
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;padding:14px 0;border-block:1px solid var(--line)}
+.stop{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding-right:8px}
+.stop b{font-size:14px}
+.stop span{font-size:11px;color:var(--muted)}
+.leg{flex:1 1 18px;min-width:18px;height:2px;background:var(--accent);margin-right:8px;position:relative;top:-8px}
+.leg.dash{background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 9px)}
+
+/* facts */
+dl.facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px;margin:0;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+dl.facts dt{color:var(--muted);font-size:13px}
+dl.facts dd{margin:0;min-width:0}
+@media (max-width:460px){dl.facts{grid-template-columns:1fr}dl.facts dt{margin-top:6px}}
+
+/* departure-board days */
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.filters button:focus-visible,.check input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.board{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.day{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.day .d{font-family:var(--mono);font-size:15px}
+.day .d small{display:block;font-family:var(--body);font-size:11px;color:var(--muted)}
+.day .body{min-width:0;display:flex;flex-direction:column;gap:3px}
+.day .where{font-size:12px;color:var(--muted)}
+.day .stay{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;padding:1px 8px;border-radius:3px;margin-right:6px;vertical-align:1px}
+.t-study{background:var(--accent-soft);color:var(--accent)}
+.t-free{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.t-move{background:var(--ink);color:var(--paper)}
+.t-tbd{background:var(--warn-soft);color:var(--warn)}
+.day.hl{background:linear-gradient(90deg,var(--accent-soft),transparent 70%)}
+
+/* timeline before departure */
+.pre{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.pre li{list-style:none;position:relative;padding:0 0 12px 18px}
+.pre li::before{content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.pre li.must::before{border-color:var(--accent);background:var(--accent)}
+.pre .when{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pre ul{padding:0;margin:0}
+
+/* checklist */
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.group h3{font-size:14px;margin:0 0 6px;color:var(--accent)}
+.check{display:flex;gap:10px;align-items:flex-start;padding:4px 0;cursor:pointer}
+.check input{margin-top:6px;accent-color:var(--accent)}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{font-size:13px;color:var(--muted)}
+
+/* tables */
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.06em}
+td.num{font-family:var(--mono);white-space:nowrap}
+
+.open{background:var(--warn-soft);border-radius:6px;padding:14px 18px}
+.open ul{margin:0;padding-left:1.2em}
+.note{font-size:13px;color:var(--muted)}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:no-preference){.day{transition:background .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">2027 SPRING · UNIVERSITY OF YORK</div>
+    <h1>ヨーク研修のしおり</h1>
+    <p class="lead">2/28朝に羽田を出て、シンガポールの乗り継ぎ（約10時間）で夜まで観光し、3/1朝にロンドン着。3/1〜3/18はヨーク大学で研修。そのあとミルトン・キーンズ1泊、ロンドン2泊で、3/21のブライトン戦を観てから帰国（3/23朝に羽田着）。<span class="mono">2026/11/12</span> 時点の計画です。</p>
+  </header>
+
+  <nav class="route" aria-label="旅程のルート">
+    <div class="stop"><b>羽田</b><span class="mono">2/28</span></div><div class="leg dash"></div>
+    <div class="stop"><b>シンガポール</b><span class="mono">2/28</span></div><div class="leg dash"></div>
+    <div class="stop"><b>ヨーク</b><span class="mono">3/1–18</span></div><div class="leg"></div>
+    <div class="stop"><b>ミルトン・キーンズ</b><span class="mono">3/18</span></div><div class="leg"></div>
+    <div class="stop"><b>ロンドン</b><span class="mono">3/19–20</span></div><div class="leg"></div>
+    <div class="stop"><b>ブライトン</b><span class="mono">3/21</span></div><div class="leg dash"></div>
+    <div class="stop"><b>羽田</b><span class="mono">3/23</span></div>
+  </nav>
+
+  <section>
+    <h2>概要 <small>OVERVIEW</small></h2>
+    <dl class="facts">
+      <dt>プログラム</dt><dd>Social Entrepreneurship Across Cultures: A UK–Japan Innovation Challenge（引率なし）</dd>
+      <dt>研修期間</dt><dd class="mono">2027/3/1（月）– 3/18（木）17泊18日</dd>
+      <dt>費用</dt><dd>20万円（宿泊・プログラム込み）／JASSO奨学金 11万円（要件あり）</dd>
+      <dt>航空券（予定）</dt><dd>シンガポール航空（シンガポール乗り継ぎ）<br><span class="mono">往路 2/28 8:50 羽田 → シンガポールで約10時間観光 → 3/1 7:40 ヒースロー</span><br><span class="mono">復路 3/21 21:45 ヒースロー → 3/23 6:20 羽田</span></dd>
+      <dt>ホテル</dt><dd>3/18 Premier Inn ミルトン・キーンズ（駅近くの店舗）／3/19・3/20 hub by Premier Inn London King's Cross</dd>
+      <dt>前後泊</dt><dd>合わせて3泊まで（往復の機内泊は含まない）。計画書に書いて、航空券を買う前に大学へ連絡</dd>
+      <dt>渡航の条件</dt><dd>危険レベル2以上の国の経由便は不可（シンガポールは対象外）。宿泊先に22時までに到着</dd>
+      <dt>大学の窓口</dt><dd>グローバル教育実施室 <span class="mono">03-5734-3520</span>／global_edu@cee.isct.ac.jp</dd>
+      <dt>現地の緊急</dt><dd>警察・救急 <span class="mono">999</span>／パスポート紛失は在英国日本大使館</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>現地の日程 <small>DAY BY DAY</small></h2>
+    <div class="filters" role="group" aria-label="表示の絞り込み">
+      <button type="button" data-f="all" aria-pressed="true" id="f-all">すべて</button>
+      <button type="button" data-f="study" aria-pressed="false" id="f-study">研修</button>
+      <button type="button" data-f="free" aria-pressed="false" id="f-free">自由行動・追加日程</button>
+    </div>
+    <div class="board" id="board"></div>
+    <p class="note">ブライトン戦は3/21（日）14時か15時開始の見込み。16時半以降の開始になったら観戦はあきらめて、3/21もロンドン観光にします。</p>
+  </section>
+
+  <section>
+    <h2>出国までの予定 <small>BEFORE DEPARTURE</small></h2>
+    <ul class="pre">
+      <li class="must"><div class="when">2026/11/19（木）12:40</div>奨学金説明会（S4-201）</li>
+      <li class="must"><div class="when">2026/12/9（水）12:40</div>コミュニケーションワークショップ（S4-201）</li>
+      <li><div class="when">2026/11 中</div>ホテルを予約（Advance）→ 大学へ航空券と宿泊先を連絡 → OK後にシンガポール航空を購入、通路側を指定</li>
+      <li><div class="when">2026/12 中</div>MyAlbion+登録（£42）、Revolut申し込み、WhatsApp登録</li>
+      <li><div class="when">12月・1月・2月</div>ポンドへ3回に分けて両替（平日）</li>
+      <li class="must"><div class="when">2027/1/7（木）12:40</div>楽々WFⅡの留学手続き説明会（S4-202）</li>
+      <li><div class="when">1/18 の週〜3月上旬</div>プレミアリーグ3月節の日時発表（欧州大会やカップ戦で動くこともある）</li>
+      <li class="must"><div class="when">1/20（水）12:35</div>Tom Hope先生の事前学習（S4-202）</li>
+      <li><div class="when">1月上旬〜2月上旬</div>ブライトン vs コヴェントリーの会員向け発売（予想）</li>
+      <li class="must"><div class="when">2/10（水）17:30</div>シンポジウム（オンライン）</li>
+      <li class="must"><div class="when">2/19（金）13:00</div>危機管理説明会・出発前最終オリエンテーション（S4-201）</li>
+    </ul>
+    <p class="note">塗りつぶしの丸は大学の必須行事です。ほかに海外安全オリエンテーション（録画）、事前学習3回、2月のTOEIC IPがあります。</p>
+  </section>
+
+  <section>
+    <h2>準備チェックリスト <small>CHECKLIST</small></h2>
+    <div class="progress" id="progress"></div>
+    <div class="checks" id="checks"></div>
+    <p class="note">チェックはこの端末のブラウザにだけ保存されます。</p>
+  </section>
+
+  <section>
+    <h2>移動メモ <small>ROUTES</small></h2>
+    <div class="tbl"><table>
+      <thead><tr><th>区間</th><th>行き方</th><th>所要</th></tr></thead>
+      <tbody>
+        <tr><td>羽田 → ヒースロー</td><td>SQ631（2/28 8:50）→ 15:25シンガポール着、乗り継ぎ約9時間45分（入国して市内観光）→ SQ306（3/1 1:10発、7:40着、第2ターミナル）。乗り継ぎに失敗しても次のSQ308（15:20着）で22時に間に合う。普通の検索で出なければ「複数都市」検索で2便を指定</td><td class="num">約32h</td></tr>
+        <tr><td>チャンギ空港 ⇄ マリーナベイ</td><td>行き：MRT（タッチ決済のカードで改札を通れる、S$2前後、乗り換え1回）。シティ・ホール駅かラッフルズ・プレイス駅からマーライオン公園まで徒歩。帰り：Grab（S$25〜35前後。日本でアプリ登録）</td><td class="num">MRT 40m / Grab 20m</td></tr>
+        <tr><td>ヒースロー → ヨーク</td><td>ピカデリー線かエリザベス線でキングス・クロス → LNER</td><td class="num">約3h</td></tr>
+        <tr><td>ヨーク市内 ⇄ 大学</td><td>U1・U2（7〜8分おき、£1.50）、深夜はUN1。降りるときもタッチ</td><td class="num">15–20m</td></tr>
+        <tr><td>ヨーク → ミルトン・キーンズ</td><td>鉄道（乗り換えあり）</td><td class="num">約3h</td></tr>
+        <tr><td>MK ⇄ シルバーストーン</td><td>タクシーかUber（£30〜50）。帰りは地元タクシーを予約</td><td class="num">20–30m</td></tr>
+        <tr><td>MK → ロンドン</td><td>ユーストン駅へ。キングス・クロスは徒歩圏</td><td class="num">30–40m</td></tr>
+        <tr><td>キングス・クロス → ブライトン</td><td>セント・パンクラスからテムズリンク（乗り換えなし）</td><td class="num">約1h20m</td></tr>
+        <tr><td>ブライトン駅 ⇄ スタジアム</td><td>ファルマー駅まで列車。試合後は駅に行列</td><td class="num">10m＋待ち</td></tr>
+        <tr><td>ブライトン → ヒースロー</td><td>テムズリンクでファリンドン → エリザベス線、または空港行きコーチ</td><td class="num">2–2.5h</td></tr>
+        <tr><td>ヒースロー → 羽田</td><td>SQ321（3/21 21:45、第2ターミナル）→ シンガポール乗り継ぎ3時間55分 → SQ636（3/23 6:20着）</td><td class="num">約23h35m</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">2/28 シンガポール：15:25着 → 入国（ビザ不要・無料。スタンプはなく、許可はメールで届く）→ 16:30ごろMRTで市内へ → 17:30〜 マリーナベイ散歩、マーライオン → 19:15ごろ日没、夕暮れのマーライオンを撮影 → 20:00 マリーナベイ・サンズ前の水と光のショー → 橋を渡ってガーデンズ・バイ・ザ・ベイへ（徒歩10〜15分）→ 20:45 光のショー（どちらも無料・約15分）→ 21:05ごろGrabで空港へ → 21:30ごろJewelで軽めの夕食 → 22:00 レイン・ボルテックスのショー → 22:30ごろ出国して搭乗口へ。Jewelは日曜夜21:30〜22:00にラストオーダーの店が多いのでさっと食べられる店に。間に合わなければ出国後のフードコートへ。SQ306は離陸後に機内食が出るので夕食は軽めでOK。夕方におなかが空いたらマリーナベイ・サンズのモールのフードコートで。スーツケースはロンドンまで預けたまま。</p>
+    <p class="note">3/21：14時開始なら、試合終了16時ごろ → 17時ごろにブライトン駅で荷物を受け取り → 19時前後にヒースロー着（出発の約3時間前）。15時開始だとヒースロー着は20時前後で、出発まで約1時間半。オンラインチェックインを済ませ、必要なら試合終了前に席を立つ。</p>
+  </section>
+
+  <section>
+    <h2>費用の目安 <small>BUDGET</small></h2>
+    <div class="tbl"><table>
+      <thead><tr><th>項目</th><th>目安</th><th>メモ</th></tr></thead>
+      <tbody>
+        <tr><td>ヨークでの食費・小遣い</td><td class="num">£350</td><td>平日£15×13日、休日£40×4日</td></tr>
+        <tr><td>ロンドンでの食費・交通費</td><td class="num">£150</td><td>3日分</td></tr>
+        <tr><td>シンガポールでの食費・交通費</td><td class="num">S$40–65</td><td>MRT S$2、Grab S$25〜35、Jewelでの夕食とおやつS$15〜25。ショーは無料。1S$＝約120円（要確認）、合計約5,000〜8,000円</td></tr>
+        <tr><td>前後泊のホテル（3泊）</td><td class="num">£250–300</td><td>Premier Inn MK 1泊＋hub King's Cross 2泊</td></tr>
+        <tr><td>MyAlbion+とチケット</td><td class="num">£75–85</td><td>会員£42＋観戦£30〜40台</td></tr>
+        <tr><td>シルバーストーン</td><td class="num">£76–116</td><td>学生入場約£16＋タクシー往復</td></tr>
+        <tr><td>航空券</td><td>購入時に確定</td><td>シンガポール航空の往復。座席指定・荷物の条件も含めて比較</td></tr>
+        <tr><td>保険・長距離列車</td><td>未定</td><td>列車は早めの予約で安くなる</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">現地分は合計 £900〜1,100 前後。参考：2026年のポンド円は 205.9〜219.6円、平均約212.9円。</p>
+  </section>
+
+  <section>
+    <h2>まだ決まっていないこと <small>OPEN</small></h2>
+    <div class="open"><ul>
+      <li>日本着が3/23（火）でも問題ないか（大学に確認）</li>
+      <li>シルバーストーンとブライトンを計画書で認めてもらえるか</li>
+      <li>ブライトン vs コヴェントリーの正式な日時（3/21 14時か15時の見込み）</li>
+      <li>シンガポール航空の運賃タイプの条件と、ヒースローの預け荷物の受付締切</li>
+      <li>ブライトン駅周辺の荷物預かり</li>
+      <li>ホームステイに3/1の何時から入れるか、食事の有無</li>
+      <li>3/19の博物館の営業時間、アメックス・スタジアムの持ち込み規定</li>
+    </ul></div>
+  </section>
+
+  <footer>元になっている予定表はClaude Docsの「2027春 ヨーク研修 予定表」です。Docsを直したら、Claudeにそう伝えるとこのページも合わせて更新します。</footer>
+</div>
+
+<script>
+const days=[
+ ["2/28","日","移動","study","羽田 → シンガポール","8:50 SQ631で出発（6:50ごろ羽田着）。15:25シンガポール着 → 入国して夜まで観光（マーライオン、マリーナベイ、ガーデンズ・バイ・ザ・ベイ、Jewelのレイン・ボルテックス）→ 22:30ごろ空港へ戻る","機内"],
+ ["3/1","月","移動","study","シンガポール → ヒースロー → ヨーク","1:10 SQ306 → 7:40 ヒースロー第2ターミナル着。キングス・クロス経由でヨークへ、昼ごろ着","ホームステイ"],
+ ["3/2","火","研修","study","ヨーク","Welcome & Orientation、語学研修、キャンパスツアー","ホームステイ"],
+ ["3/3","水","研修","study","ヨーク","Social Entrepreneurship講義、Assessment","ホームステイ"],
+ ["3/4","木","研修","study","ヨーク","Social Entrepreneurship講義、ヨークの歴史","ホームステイ"],
+ ["3/5","金","研修","study","ヨーク","Cultural Visit（Bettys Cafe Tea Rooms、市内ツアー）、自由行動","ホームステイ"],
+ ["3/6","土","自由","free","ヨーク","シャンブルズ（朝）、ヨーク・ミンスター、城壁","ホームステイ"],
+ ["3/7","日","自由","free","ヨーク","ミュージアム・ガーデンズ、ウーズ川沿い","ホームステイ"],
+ ["3/8","月","研修","study","ヨーク","Social Entrepreneurship講義、語学研修","ホームステイ"],
+ ["3/9","火","研修","study","ヨーク","Social Entrepreneurship講義、Culture講義","ホームステイ"],
+ ["3/10","水","研修","study","ヨーク","Social Entrepreneurship講義、語学講義、Culture講義","ホームステイ"],
+ ["3/11","木","研修","study","ヨーク","Cultural Visit","ホームステイ"],
+ ["3/12","金","研修","study","ヨーク","Social Entrepreneurship講義、語学研修","ホームステイ"],
+ ["3/13","土","自由","free","ヨーク周辺","リーズ日帰りやアジア系スーパーなど","ホームステイ"],
+ ["3/14","日","自由","free","ヨーク","F1バーレーンGP決勝をパブで観戦","ホームステイ"],
+ ["3/15","月","研修","study","ヨーク","Social Entrepreneurship講義","ホームステイ"],
+ ["3/16","火","研修","study","ヨーク","Social Entrepreneurship講義、Culture講義","ホームステイ"],
+ ["3/17","水","研修","study","ヨーク","講義、Farewell Event（UK–Japan Social Innovation Showcase）","ホームステイ",1],
+ ["3/18","木","移動","free","ヨーク → ミルトン・キーンズ","研修終了。鉄道で移動（約3時間）","Premier Inn ミルトン・キーンズ"],
+ ["3/19","金","追加","free","シルバーストーン → ロンドン","午前：シルバーストーン博物館。夕方：ロンドン・アイとビッグベン","hub London King's Cross",1],
+ ["3/20","土","追加","free","ロンドン","ロンドン観光（タワーブリッジ、博物館、Japan Centreなど）","hub London King's Cross"],
+ ["3/21","日","観戦","free","ロンドン → ブライトン → ヒースロー","朝チェックアウト → ブライトン駅周辺に荷物を預ける → 14時か15時開始のブライトン vs コヴェントリーを観戦 → ヒースロー第2ターミナルへ → 21:45 SQ321","機内",1],
+ ["3/22","月","移動","free","シンガポール","19:00着、3時間55分の乗り継ぎ → 22:55 SQ636","機内"],
+ ["3/23","火","移動","free","羽田","6:20着、帰国",""]
+];
+const tagClass={研修:"t-study",自由:"t-free",移動:"t-move",追加:"t-free",観戦:"t-tbd"};
+const board=document.getElementById("board");
+function render(f){
+  board.innerHTML="";
+  days.filter(d=>f==="all"||d[3]===f).forEach(d=>{
+    const el=document.createElement("div");
+    el.className="day"+(d[7]?" hl":"");
+    el.innerHTML=`<div class="d">${d[0]}<small>${d[1]}曜</small></div>
+      <div class="body"><div><span class="tag ${tagClass[d[2]]}">${d[2]}</span><span class="where">${d[4]}</span></div>
+      <div>${d[5]}</div>${d[6]?`<div class="stay">宿泊：${d[6]}</div>`:""}</div>`;
+    board.appendChild(el);
+  });
+}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  render(b.dataset.f);
+}));
+render("all");
+
+const groups={
+ "航空券・ホテル（11月中）":["Premier Innを公式サイトで予約（Advance：到着28日前まで全額返金）","大学へ航空券・宿泊先・前後泊の活動を連絡（3/23着でよいかも確認）","OK後にシンガポール航空を購入（往路SQ631→SQ306、復路SQ321→SQ636の通し航空券）","往復とも通路側を指定","hubに3/21の荷物預かりを問い合わせ","ホームステイ先に3/1昼ごろ着と伝える","予約確認メールを保存"],
+ "書類・手続き":["パスポートの期限を確認し、写真を保存","英国ETA（£16）を申請（大学の指示を待ってから）","SG Arrival Card（無料）を2/25〜2/28にICA公式サイトかMyICAアプリで提出","大学指定の海外旅行保険に加入","たびレジに登録","留学計画書（シルバーストーン・ブライトンの位置づけ）","ホストファミリーの情報を確認"],
+ "お金":["Revolutを申し込み、国内で試す","クレジットカードの限度額と本人認証を確認","カード会社アプリの利用通知をオン","ポンドを分けて両替（計£500〜1,000）","平日（2/26まで）にRevolutでS$60〜70を両替。現金はS$20ほどあると安心"],
+ "持ち物":["フード付き防水ジャケット・防水の靴・防寒小物","ショルダーバッグ＋リュック、スマホ用ストラップ","シンガポール用に半袖と折りたたみ傘を手荷物へ","変換プラグ（BF）2〜3個、モバイルバッテリー","カメラ＋24mm＋16-50mm、予備バッテリー、レインカバー","スーツケース用ワイヤーロック","お土産（抹茶菓子・せんべい・緑茶・和雑貨）","インスタント味噌汁・お茶漬け"],
+ "アプリ":["Revolut・Uber・First Bus・鉄道アプリ・Googleマップ","Grab（シンガポール用）を日本で登録（電話番号・カード）","ブライトンとシルバーストーンの持ち込み規定を確認"],
+ "スマホの回線":["日本のeSIMはSMS用に残し、データローミングはオフ","旅行用データeSIM（30日・15〜20GB）を出発1〜2週間前に入れる","日本の回線の海外SMS受信の条件を確認","WhatsAppを日本で登録"]
+};
+let saved={};
+try{saved=JSON.parse(localStorage.getItem("york-checks")||"{}")}catch(e){saved={}}
+const checks=document.getElementById("checks"),prog=document.getElementById("progress");
+let i=0,total=0;
+Object.entries(groups).forEach(([g,items])=>{
+  const box=document.createElement("div");box.className="group";
+  box.innerHTML=`<h3>${g}</h3>`;
+  items.forEach(t=>{
+    const id="c"+(i++);total++;
+    const lab=document.createElement("label");lab.className="check";
+    lab.innerHTML=`<input type="checkbox" id="${id}"${saved[id]?" checked":""}><span>${t}</span>`;
+    lab.querySelector("input").addEventListener("change",e=>{
+      saved[id]=e.target.checked;
+      try{localStorage.setItem("york-checks",JSON.stringify(saved))}catch(err){}
+      upd();
+    });
+    box.appendChild(lab);
+  });
+  checks.appendChild(box);
+});
+function upd(){const n=checks.querySelectorAll("input:checked").length;prog.textContent=`${n} / ${total} 完了`;}
+upd();
+</script>
+
+</body></html>
